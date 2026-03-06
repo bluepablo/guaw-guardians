@@ -211,12 +211,12 @@ export const StreamGuardianPage = () => {
           className="mb-20 p-12 rounded-3xl bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/20"
         >
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold mb-4">Enterprise Pricing</h2>
+            <h2 className="text-4xl font-bold mb-4">Included in Business Plan</h2>
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-6xl font-mono font-black">$20,000</span>
+              <span className="text-6xl font-mono font-black">$790</span>
               <span className="text-gray-400">/month</span>
             </div>
-            <p className="text-blue-400 font-mono text-sm mt-2">+ $0.05 per stream hour</p>
+            <p className="text-blue-400 font-mono text-sm mt-2">Up to 1.5M verifications included</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {[

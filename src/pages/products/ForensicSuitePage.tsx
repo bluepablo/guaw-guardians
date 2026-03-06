@@ -210,12 +210,12 @@ export const ForensicSuitePage = () => {
           className="mb-20 p-12 rounded-3xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/20"
         >
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold mb-4">Pricing</h2>
+            <h2 className="text-4xl font-bold mb-4">SaaS Integrations</h2>
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-6xl font-mono font-black">$500 - $5K</span>
+              <span className="text-6xl font-mono font-black">Pro & Business</span>
             </div>
-            <p className="text-purple-400 font-mono text-sm mt-2">per case (based on complexity)</p>
-            <p className="text-gray-500 text-xs mt-4">Subscription: $10,000/mo for unlimited cases</p>
+            <p className="text-purple-400 font-mono text-sm mt-2">Included in our standard API plans ($249 - $790/mo)</p>
+            <p className="text-gray-500 text-xs mt-4">Expert Witness & Consulting available via custom retainer.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {[

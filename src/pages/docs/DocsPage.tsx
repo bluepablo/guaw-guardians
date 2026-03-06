@@ -341,14 +341,14 @@ export const DocsPage = () => {
                          Single-pass verification for images, audio files, and documents. Latency: ~5ms. Guarantees: Physical consistency at capture time.
                      </p>
                  </div>
-                 <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent border border-blue-500/10 space-y-4">
+                 <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent border border-blue-500/5 space-y-4">
                      <div className="text-blue-400 font-mono text-xs uppercase tracking-widest">Temporal Batch</div>
                      <h4 className="text-white font-bold text-lg">Short Sequences</h4>
                      <p className="text-sm text-gray-400 leading-relaxed">
                          Frame-by-frame analysis with hysteresis tracking. Detects temporal inconsistencies (frame injection, splice edits). Latency: ~5ms/frame.
                      </p>
                  </div>
-                 <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/10 space-y-4">
+                 <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/5 space-y-4">
                      <div className="text-purple-400 font-mono text-xs uppercase tracking-widest">Live Stream</div>
                      <h4 className="text-white font-bold text-lg">Real-Time Flows</h4>
                      <p className="text-sm text-gray-400 leading-relaxed">
@@ -361,7 +361,7 @@ export const DocsPage = () => {
           {/* NON-GOALS (CRITICAL) */}
           <section id="non-goals" className="space-y-10 scroll-mt-32 border-t border-white/5 pt-16">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+                <div className="p-3 rounded-xl bg-red-500/5 border border-red-500/10">
                     <Shield size={24} className="text-red-400" />
                 </div>
                 <div>
@@ -370,13 +370,13 @@ export const DocsPage = () => {
                 </div>
              </div>
 
-             <div className="p-8 rounded-2xl bg-red-500/5 border border-red-500/10 space-y-6">
+             <div className="p-8 rounded-2xl bg-red-500/5 border border-red-500/5 space-y-6">
                  <p className="text-gray-400 text-sm leading-relaxed">
                      To prevent misuse and legal misclassification, GUAW explicitly defines what it <strong className="text-white">does not do</strong>:
                  </p>
                  <div className="grid md:grid-cols-2 gap-6">
                      <div className="flex items-start gap-3">
-                         <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                         <div className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                              <span className="text-red-400 text-xs font-bold">✕</span>
                          </div>
                          <div>
@@ -385,7 +385,7 @@ export const DocsPage = () => {
                          </div>
                      </div>
                      <div className="flex items-start gap-3">
-                         <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                         <div className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                              <span className="text-red-400 text-xs font-bold">✕</span>
                          </div>
                          <div>
@@ -394,7 +394,7 @@ export const DocsPage = () => {
                          </div>
                      </div>
                      <div className="flex items-start gap-3">
-                         <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                         <div className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                              <span className="text-red-400 text-xs font-bold">✕</span>
                          </div>
                          <div>
@@ -403,7 +403,7 @@ export const DocsPage = () => {
                          </div>
                      </div>
                      <div className="flex items-start gap-3">
-                         <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                         <div className="w-6 h-6 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                              <span className="text-red-400 text-xs font-bold">✕</span>
                          </div>
                          <div>
@@ -424,7 +424,7 @@ export const DocsPage = () => {
           {/* Module: Sovereign Code Seal */}
           <section id="codeseal" className="space-y-10 scroll-mt-32">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20">
+                <div className="p-3 rounded-xl bg-orange-500/5 border border-orange-500/10">
                     <Lock size={24} className="text-orange-500" />
                 </div>
                 <div>
@@ -470,7 +470,7 @@ export const DocsPage = () => {
           {/* Module: Cronos Sentinel */}
           <section id="cronos" className="space-y-10 scroll-mt-32">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/10">
                     <Clock size={24} className="text-blue-500" />
                 </div>
                 <div>
@@ -639,7 +639,7 @@ export const DocsPage = () => {
           {/* Module: Silicon Gate (Ontological Sovereignty) */}
           <section id="silicongate" className="space-y-10 scroll-mt-32">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+                <div className="p-3 rounded-xl bg-red-500/5 border border-red-500/10">
                     <Cpu size={24} className="text-red-500" />
                 </div>
                 <div>
@@ -665,11 +665,11 @@ export const DocsPage = () => {
                  </div>
                  <div className="text-gray-500 mb-4 uppercase tracking-widest font-bold">Execution Verdict Logic</div>
                  <div className="space-y-3 relative z-10">
-                     <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/10">
+                     <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/5">
                          <span className="text-gray-400">P99 Latency (Silicon)</span>
                          <span className="text-red-400 font-bold">Native Metal Speed [VALID]</span>
                      </div>
-                     <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/10">
+                     <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/5">
                          <span className="text-gray-400">Jitter Ratio (Hardware)</span>
                          <span className="text-red-400 font-bold">1.42 [STABLE]</span>
                      </div>
@@ -683,7 +683,7 @@ export const DocsPage = () => {
                  </div>
              </div>
 
-             <div className="p-6 rounded-xl bg-red-500/5 border border-red-500/10">
+             <div className="p-6 rounded-xl bg-red-500/5 border border-red-500/5">
                  <h4 className="text-xs font-mono text-red-400 uppercase font-bold tracking-[0.2em] mb-3">Apoptosis Trigger</h4>
                  <p className="text-sm text-gray-400 leading-relaxed italic">
                     "If the Jitter Profiler detects hypervisor interposition or synthetic clocking, the Sovereign Kernel triggers instant Apoptosis. No execution is permitted in unverified reality."
@@ -693,7 +693,7 @@ export const DocsPage = () => {
           {/* Module: Multimodal Integrity */}
           <section id="multimodal" className="space-y-10 scroll-mt-32 border-t border-white/5 pt-16">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/10">
                     <Activity size={24} className="text-blue-400" />
                 </div>
                 <div>
@@ -705,7 +705,7 @@ export const DocsPage = () => {
              <div className="grid md:grid-cols-2 gap-8 text-sm leading-relaxed">
                 <div className="p-6 rounded-2xl bg-[#0A0A0A] border border-white/5 space-y-4">
                     <div className="flex items-center gap-3">
-                        <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded text-[10px] font-bold">POST</span>
+                        <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-[10px] font-bold">POST</span>
                         <code className="text-white text-xs">/integrity/multimodal/audio/verify</code>
                     </div>
                     <h4 className="text-white font-bold text-xs uppercase tracking-widest">Audio Sensor Fingerprinting</h4>
@@ -716,7 +716,7 @@ export const DocsPage = () => {
 
                 <div className="p-6 rounded-2xl bg-[#0A0A0A] border border-white/5 space-y-4">
                     <div className="flex items-center gap-3">
-                        <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded text-[10px] font-bold">POST</span>
+                        <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-[10px] font-bold">POST</span>
                         <code className="text-white text-xs">/integrity/multimodal/telemetry/verify</code>
                     </div>
                     <h4 className="text-white font-bold text-xs uppercase tracking-widest">Biological Handshake</h4>
@@ -830,7 +830,7 @@ export const DocsPage = () => {
                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                 </div>
                 <div className="p-8 space-y-4">
-                    <div className="w-full p-4 rounded-xl bg-red-500/5 border border-red-500/20 text-red-400 font-mono text-xs">
+                    <div className="w-full p-4 rounded-xl bg-red-500/5 border border-red-500/10 text-red-400 font-mono text-xs">
                         [CRITICAL_ERROR] 423: INTEGRITY_BREACH_DETECTED <br/>
                         REASON: Payload hash mismatch or unauthorized environment intercept. <br/>
                         ACTION: Transaction suspended. Session frozen.
@@ -843,7 +843,7 @@ export const DocsPage = () => {
           {/* Module: Lazarus Ledger */}
           <section id="ledger" className="space-y-10 scroll-mt-32">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                <div className="p-3 rounded-xl bg-purple-500/5 border border-purple-500/10">
                     <Lock size={24} className="text-purple-400" />
                 </div>
                 <div>
@@ -882,7 +882,7 @@ export const DocsPage = () => {
           {/* Module: Cryptographic Proofs (The Forensic Truth) */}
           <section id="cryptography" className="space-y-10 scroll-mt-32 border-t border-white/5 pt-16">
              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/10">
                     <Fingerprint size={24} className="text-blue-400" />
                 </div>
                 <div>
@@ -1023,7 +1023,7 @@ export const DocsPage = () => {
                             <span className="text-[10px] text-gray-500 font-mono">Presence Verification</span>
                         </div>
                         <div className="flex justify-center"><ChevronRight className="rotate-90 text-gray-700" size={24} /></div>
-                        <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-center">
+                        <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 text-center">
                             <h4 className="text-blue-400 font-black uppercase tracking-widest text-[10px] mb-2">Observer</h4>
                             <div className="w-12 h-12 rounded-full bg-blue-900/40 flex items-center justify-center mx-auto mb-3">
                                 <Eye size={20} className="text-blue-400" />
@@ -1045,7 +1045,7 @@ export const DocsPage = () => {
                     </div>
 
                     <div className="space-y-8">
-                        <div className="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-center">
+                        <div className="p-4 rounded-2xl bg-purple-500/5 border border-purple-500/10 text-center">
                             <h4 className="text-purple-400 font-black uppercase tracking-widest text-[10px] mb-2">Layer 1: Immutable</h4>
                             <div className="w-12 h-12 rounded-full bg-purple-900/40 flex items-center justify-center mx-auto mb-3">
                                 <Server size={20} className="text-purple-400" />
@@ -1055,7 +1055,7 @@ export const DocsPage = () => {
                         </div>
                         <div className="flex justify-center"><ChevronRight className="rotate-90 text-gray-700" size={24} /></div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/10 text-center">
+                            <div className="p-3 rounded-xl bg-blue-500/5 border border-blue-500/5 text-center">
                                 <Clock size={16} className="text-blue-400 mx-auto mb-2" />
                                 <span className="text-[10px] text-white font-bold block">Cronos</span>
                             </div>
@@ -1186,7 +1186,7 @@ export const DocsPage = () => {
                   {/* GUAW KERNEL SECTION */}
                   <div className="space-y-6">
                       <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-lg bg-blue-500/5 border border-blue-500/10 flex items-center justify-center">
                               <Activity size={16} className="text-blue-400" />
                           </div>
                           <h4 className="text-white font-bold text-sm uppercase tracking-widest text-blue-400">Presence Verification (GUAW Kernel)</h4>
@@ -1305,7 +1305,7 @@ export const DocsPage = () => {
                 ))}
               </div>
               
-              <div className="flex gap-4 p-8 rounded-2xl bg-orange-500/5 border border-orange-500/10">
+              <div className="flex gap-4 p-8 rounded-2xl bg-orange-500/5 border border-orange-500/5">
                 <div className="text-orange-500 font-black text-xs uppercase tracking-widest pt-1">Important Verdicts</div>
                 <div className="space-y-4">
                     <p className="text-sm text-gray-400 leading-relaxed">

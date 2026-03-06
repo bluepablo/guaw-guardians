@@ -280,7 +280,7 @@ export const JerkCostCanvas = ({ onVerificationChange }: JerkCostCanvasProps) =>
           </div>
           <div className="px-4 py-2 bg-black/40 border border-white/5 rounded-xl backdrop-blur-md">
              <p className="text-[8px] text-gray-500 font-mono uppercase tracking-[0.15em]">
-                VERDICT_LT: <span className="text-white/80">1.04ms</span> <span className="mx-2 opacity-20">|</span> ENTROPY: <span className="text-emerald-500/60">DET_MAX</span>
+                VERDICT_LT: <span className="text-white/80">~11ms (p50)</span> <span className="mx-2 opacity-20">|</span> ENTROPY: <span className="text-emerald-500/60">DET_MAX</span>
              </p>
           </div>
       </div>

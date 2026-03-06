@@ -1,0 +1,55 @@
+[174] <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-700 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+[281] <td className="py-6 px-6 text-red-400/80">$1/1k (Reduced Tier)</td>
+[299] <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-[10px] font-black uppercase tracking-widest border border-sky-500/20 shadow-[0_0_20px_rgba(56,189,248,0.15)] mb-4">
+[300] <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+[304] The <span className="text-sky-400">Deepfake</span> Prevention<br/>
+[315] <h3 className="text-sky-400 font-bold uppercase tracking-widest text-xs">Sensor-level Noise</h3>
+[319] <h3 className="text-sky-400 font-bold uppercase tracking-widest text-xs">Zero Data Upload</h3>
+[323] <h3 className="text-sky-400 font-bold uppercase tracking-widest text-xs">11ms Verification</h3>
+[332] }} className="group flex items-center gap-4 bg-sky-500/10 border border-sky-500/20 px-8 py-4 rounded-2xl hover:bg-sky-500/20 transition-all font-black text-[10px] uppercase tracking-widest text-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.1)]">
+[354] <div key={i} className="flex items-center gap-4 text-red-400/60 font-mono text-xs tracking-tight group/item">
+[461] className="border-sky-500/20 shadow-[0_0_40px_-20px_rgba(56,189,248,0.2)]"
+[467] className="border-sky-500/10 shadow-[0_0_30px_-15px_rgba(56,189,248,0.1)]"
+[482] className="border-purple-500/20 shadow-[0_0_40px_-20px_rgba(168,85,247,0.2)]"
+[488] className="border-purple-500/10 shadow-[0_0_30px_-15px_rgba(168,85,247,0.1)]"
+[504] <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+[505] <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+[510] <span className="text-gray-600 group-hover:text-blue-400 transition-colors duration-700">arbiter.</span>
+[511] <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-blue-500/0 via-blue-500/40 to-blue-500/0" />
+[514] <span className="absolute -left-8 top-2 text-blue-500/20 font-mono text-xs">01</span>
+[520] <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-300 group">
+[521] <div className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-widest group-hover:text-blue-300 transition-colors truncate">Authority Matrix</div>
+[522] <div className="text-xl font-bold text-white tracking-tight">Computation <span className="text-[10px] text-blue-500/50">SEALED</span></div>
+[525] <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 transition-all duration-300 group">
+[526] <div className="text-purple-400 font-mono text-[10px] font-bold uppercase tracking-widest group-hover:text-purple-300 transition-colors truncate">Isolated TEE</div>
+[530] <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 hover:bg-white/[0.05] hover:border-amber-500/30 transition-all duration-300 group">
+[531] <div className="text-amber-400 font-mono text-[10px] font-bold uppercase tracking-widest group-hover:text-amber-300 transition-colors truncate">Attestation Proof</div>
+[551] <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+[557] <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest italic mb-2">Technical Reference</div>
+[611] <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0" />
+[630] <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</div>
+[637] <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">3</div>
+[691] <div className="text-amber-400 font-mono text-[10px] font-bold uppercase tracking-widest">Quality Witness</div>
+[698] <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 blur-xl opacity-50" />
+[706] <div className="px-3 py-1 rounded bg-amber-500/10 text-amber-500 text-[10px] font-black border border-amber-500/20 uppercase tracking-widest">GOLD SEAL</div>
+[769] <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/5 to-transparent pointer-events-none" />
+[778] <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-[10px] font-black uppercase tracking-widest border border-red-500/20 mb-8">
+[779] <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+[800] <div className="p-8 rounded-[2.5rem] bg-black/40 border border-white/5 space-y-3 hover:border-red-500/30 transition-all duration-700 group">
+[1078] <div className="p-8 rounded-[3rem] bg-black/40 border border-purple-500/20 space-y-6 group hover:border-purple-500/40 transition-all duration-700 flex flex-col relative overflow-hidden backdrop-blur-2xl">
+[1079] <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+[1081] <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[8px] font-black uppercase tracking-widest border border-purple-500/20">
+[1085] <p className="text-purple-400/70 text-[10px] leading-relaxed italic uppercase tracking-tighter">Ultimate reCAPTCHA replacement.</p>
+[1095] <ul className="space-y-4 text-[10px] text-gray-400 border-t border-purple-500/10 pt-8 flex-1 relative z-10">
+[1096] <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> 100k req/month · 2 domains</li>
+[1097] <li className="flex items-center gap-3 italic text-purple-400"><FileCheck size={16} /> <span className="font-black uppercase">Presence SDK Included</span></li>
+[1098] <li className="flex items-center gap-3 line-through opacity-30 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> Media / Deepfake Detection</li>
+[1099] <li className="flex items-center gap-3 line-through opacity-30 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> ZK-Proofs</li>
+[1101] <Link to="/console/register" className="block w-full py-5 rounded-2xl bg-purple-500/20 border border-purple-500/30 text-purple-300 font-black text-center text-[10px] uppercase tracking-widest hover:bg-purple-500 hover:text-black transition-all relative z-10">
+[1188] <div className="mt-6 p-10 rounded-[4rem] bg-gradient-to-br from-red-500/5 to-transparent border border-red-500/20 group hover:border-red-500/40 transition-all duration-700 relative overflow-hidden backdrop-blur-3xl">
+[1194] <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[9px] font-black uppercase tracking-[0.2em] border border-red-500/20">
+[1204] <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.9)]" />
+[1205] <span className="text-red-500 font-black uppercase tracking-widest">Pricing: Custom Engineering</span>
+[1207] <Link to="/contact" className="flex-shrink-0 px-12 py-6 rounded-2xl bg-red-500 text-black font-black text-[11px] uppercase tracking-[0.3em] hover:scale-[1.05] transition-all shadow-[0_15px_50px_-10px_rgba(239,68,68,0.4)]">
+[1249] <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-700 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+[1293] <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />

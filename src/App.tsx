@@ -11,6 +11,7 @@ import { ConsoleLoginPage } from './pages/console/ConsoleLoginPage';
 import { ConsoleRegisterPage } from './pages/console/ConsoleRegisterPage';
 import { ConsoleDashboardPage } from './pages/console/ConsoleDashboardPage';
 import { LegalPage } from './pages/legal/LegalPage';
+import { AcceptableUsePage } from './pages/legal/AcceptableUsePage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         
         {/* Legal */}
         <Route path="/legal" element={<LegalPage />} />
+        <Route path="/acceptable-use" element={<AcceptableUsePage />} />
         
         {/* Fallback to Landing */}
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,0 +1,84 @@
+[88] <div className="w-1 h-1 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
+[112] <div className="w-1 h-1 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.5)]" />
+[130] <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+[141] <a href="#audit-sdk" className="flex items-center gap-2 px-3 py-2 rounded-lg text-purple-400 hover:text-white hover:bg-white/5 transition-all text-sm font-medium">
+[142] <div className="w-1 h-1 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.5)]" />
+[151] <Server size={10} className="text-purple-400" />
+[175] <div className="w-1 h-1 rounded-full bg-orange-400" />
+[295] <h4 className="text-white font-bold uppercase tracking-widest text-xs text-purple-400">Deterministic Non-Linear Sampling</h4>
+[301] <h4 className="text-white font-bold uppercase tracking-widest text-xs text-amber-400">Economic Load Factor</h4>
+[356] <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/10 space-y-4">
+[357] <div className="text-purple-400 font-mono text-xs uppercase tracking-widest">Live Stream</div>
+[369] <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+[370] <Shield size={24} className="text-red-400" />
+[374] <p className="text-xs text-red-400 font-mono uppercase tracking-widest mt-1">Scope Boundaries</p>
+[378] <div className="p-8 rounded-2xl bg-red-500/5 border border-red-500/10 space-y-6">
+[384] <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+[385] <span className="text-red-400 text-xs font-bold">✕</span>
+[393] <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+[394] <span className="text-red-400 text-xs font-bold">✕</span>
+[402] <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+[403] <span className="text-red-400 text-xs font-bold">✕</span>
+[411] <div className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+[412] <span className="text-red-400 text-xs font-bold">✕</span>
+[432] <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20">
+[433] <Lock size={24} className="text-orange-500" />
+[437] <p className="text-xs text-orange-500 font-mono uppercase tracking-widest mt-1">Bootloader Phase 0.5: Logic Integrity</p>
+[459] <div className="text-purple-400 font-bold mb-1">Golden Seal</div>
+[463] <div className="p-4 border border-orange-500/30 rounded-lg bg-orange-500/5">
+[464] <div className="text-orange-400 font-bold mb-1">Code Seal</div>
+[466] <code className="text-[10px] text-orange-300">SHA-3 (Recursive Tree)</code>
+[518] { title: 'The Kernel', color: 'purple', icon: <AirIcon className="text-purple-400" size={32} />, desc: 'Authorizes logical consistency and business rule compliance.' },
+[519] { title: 'The Auditor', color: 'orange', icon: <SunIcon className="text-orange-400" size={32} />, desc: 'Authorizes full-tree code integrity (Logic Verification).' },
+[612] <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/10 mb-4">
+[613] <p className="text-amber-400 text-xs mb-2">⚠️ Note:</p>
+[647] <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+[648] <Cpu size={24} className="text-red-500" />
+[652] <p className="text-xs text-red-500 font-mono uppercase tracking-widest mt-1">Tier 40: Ontological Sovereignty</p>
+[669] <Cpu size={120} className="text-red-500" />
+[673] <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/10">
+[675] <span className="text-red-400 font-bold">Native Metal Speed [VALID]</span>
+[677] <div className="flex items-center justify-between p-3 rounded bg-red-500/5 border border-red-500/10">
+[679] <span className="text-red-400 font-bold">1.42 [STABLE]</span>
+[687] <code className="text-red-500">SYSTEM_RECOGNITION: BARE_METAL_SOVEREIGN</code>
+[691] <div className="p-6 rounded-xl bg-red-500/5 border border-red-500/10">
+[692] <h4 className="text-xs font-mono text-red-400 uppercase font-bold tracking-[0.2em] mb-3">Apoptosis Trigger</h4>
+[735] <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+[745] <div className="text-purple-400 font-mono text-[10px]">Stochastic Stimulus</div>
+[749] <div className="text-purple-400 font-mono text-[10px]">Neuromuscular Delay</div>
+[753] <div className="text-purple-400 font-mono text-[10px]">Organic / Synthetic</div>
+[835] <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+[838] <div className="w-full p-4 rounded-xl bg-red-500/5 border border-red-500/20 text-red-400 font-mono text-xs">
+[851] <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+[852] <Lock size={24} className="text-purple-400" />
+[856] <p className="text-xs text-purple-400 font-mono uppercase tracking-widest mt-1">Layer 1: Forensic Verification</p>
+[921] <div className="pl-4 border-l-2 border-purple-500/30 space-y-2">
+[969] <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+[970] <FileCheck size={24} className="text-purple-400" />
+[974] <p className="text-xs text-purple-400 font-mono uppercase tracking-widest mt-1">Enterprise Audit & Legal Certification</p>
+[1016] <span className="text-[10px] font-black bg-orange-500 text-white px-2 py-0.5 rounded">LAYER 2</span>
+[1021] <div className="mb-2 text-orange-400 font-bold">// Usage: Media Analysis Services</div>
+[1031] <span className="text-[10px] font-black bg-purple-500 text-white px-2 py-0.5 rounded">LAYER 3</span>
+[1036] <div className="mb-2 text-purple-400 font-bold">// Usage: Auditor / Third Party</div>
+[1134] <div className="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-center">
+[1135] <h4 className="text-purple-400 font-black uppercase tracking-widest text-[10px] mb-2">Layer 1: Immutable</h4>
+[1136] <div className="w-12 h-12 rounded-full bg-purple-900/40 flex items-center justify-center mx-auto mb-3">
+[1137] <Server size={20} className="text-purple-400" />
+[1183] <div className="text-purple-400">Authorization: <span className="text-orange-300">Bearer sk_live_...</span></div>
+[1184] <div className="text-purple-400">X-Entropy-Signature: <span className="text-orange-300">0x7f2a9d1c...</span></div>
+[1200] <p className="text-xs text-gray-400 leading-relaxed italic border-l-2 border-orange-500/50 pl-4">
+[1221] <div className="p-3 rounded-xl bg-orange-400/10 border border-orange-400/20">
+[1222] <Terminal size={24} className="text-orange-400" />
+[1226] <p className="text-xs text-orange-400 font-mono uppercase tracking-widest mt-1">Cross-Platform Implementation</p>
+[1258] <div className="text-emerald-400">import <span className="text-white">{`{ GuawGuardian }`}</span> from <span className="text-orange-300">'@guaw/web-sdk'</span>;</div>
+[1260] <div className="pl-4 text-gray-400">apiKey: <span className="text-orange-300">'sk_live_...'</span></div>
+[1265] <div className="text-white">if (<span className="text-blue-300">verdict.status</span> === <span className="text-orange-300">'VERIFIED'</span>) {`{`}</div>
+[1299] <div className="text-emerald-400">import <span className="text-white">{`{ SovereignKernel }`}</span> from <span className="text-orange-300">'@guaw/kernel'</span>;</div>
+[1300] <div className="text-white mt-4 font-bold">SovereignKernel.init({`{`} apiKey: <span className="text-orange-300">'pk_live_...'</span> {`}`});</div>
+[1303] <div className="text-white">const <span className="text-emerald-400 font-normal">res</span> = await SovereignKernel.verify(trace, <span className="text-orange-300">"auth"</span>);</div>
+[1315] <div className="text-emerald-400">let <span className="text-white font-normal">guardian</span> = GuawMobileSDK(key: <span className="text-orange-300">"sk_live_..."</span>)</div>
+[1321] <div className="pl-8 text-red-400">handleIntegrityBreach(error)</div>
+[1367] <td className="px-6 py-4 text-orange-400 font-mono">SHA-3 (Keccak)</td>
+[1372] <td className="px-6 py-4 text-red-400 font-bold uppercase">Strict</td>
+[1394] <div className="flex gap-4 p-8 rounded-2xl bg-orange-500/5 border border-orange-500/10">
+[1395] <div className="text-orange-500 font-black text-xs uppercase tracking-widest pt-1">Important Verdicts</div>

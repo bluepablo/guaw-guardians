@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Volume2, Video, Activity, Fingerprint, Lock, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
-import { consoleService } from '../../../services/consoleService';
+import { consoleService, API_BASE } from '../../../services/consoleService';
 
 interface AuditLayer {
     beta?: number;
@@ -34,7 +34,7 @@ const StreamWidget = ({ token }: { token: string | null }) => {
 
     const startStream = async () => {
         try {
-            const res = await fetch('http://localhost:3002/api/v1/integrity/stream/start', {
+            const res = await fetch(`${API_BASE}/integrity/stream/start`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ zkInterval: 30 })
@@ -53,7 +53,7 @@ const StreamWidget = ({ token }: { token: string | null }) => {
                 formData.append('frame', frame);
 
                 try {
-                    const fRes = await fetch(`http://localhost:3002/api/v1/integrity/stream/${data.sessionId}/frame`, {
+                    const fRes = await fetch(`${API_BASE}/integrity/stream/${data.sessionId}/frame`, {
                         method: 'POST',
                         headers: { 'Authorization': `Bearer ${token}` },
                         body: formData
@@ -87,7 +87,7 @@ const StreamWidget = ({ token }: { token: string | null }) => {
 
     const stopStream = async () => {
         if (sessionId) {
-            await fetch(`http://localhost:3002/api/v1/integrity/stream/${sessionId}/stop`, {
+            await fetch(`${API_BASE}/integrity/stream/${sessionId}/stop`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

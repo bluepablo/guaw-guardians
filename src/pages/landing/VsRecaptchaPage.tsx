@@ -113,8 +113,13 @@ export const VsRecaptchaPage = () => {
                         </tr>
                         <tr className="border-b border-white/5">
                             <td className="py-8 px-10 text-gray-400 font-mono text-xs uppercase">Free Tier (2025)</td>
-                            <td className="py-8 px-10 text-white font-bold italic">Unlimited Basic Verification</td>
+                            <td className="py-8 px-10 text-white font-bold italic">15,000/mo included (Trial)</td>
                             <td className="py-8 px-10 text-red-500 font-black uppercase">10,000/mo (Max)</td>
+                        </tr>
+                        <tr className="border-b border-white/5">
+                            <td className="py-8 px-10 text-gray-400 font-mono text-xs uppercase">100,000 Requests</td>
+                            <td className="py-8 px-10 text-emerald-400 font-black text-xl italic">$39 / month (Lite)</td>
+                            <td className="py-8 px-10 text-red-500 font-black">$90 / month (Enterprise)</td>
                         </tr>
                     </tbody>
                 </table>

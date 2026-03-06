@@ -5,7 +5,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Check, AlertCircle } from 'lucide-react';
 import { consoleService } from '../../services/consoleService';
 import { ParticlesBackground } from '../../components/ui/ParticlesBackground';
-import { TermsModal } from '../../components/modals/TermsModal';
 import { SovereignGlyph } from '../../components/ui/SovereignGlyph';
 
 export const ConsoleRegisterPage = () => {
@@ -15,7 +14,6 @@ export const ConsoleRegisterPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
-    const [isTermsOpen, setIsTermsOpen] = useState(false);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const navigate = useNavigate();
 
@@ -156,7 +154,7 @@ export const ConsoleRegisterPage = () => {
                                 />
                             </div>
                             <label htmlFor="terms" className="text-[10px] text-gray-500 uppercase tracking-widest font-mono cursor-pointer select-none leading-relaxed">
-                                I confirm I have read and agree to the <button type="button" onClick={() => setIsTermsOpen(true)} className="text-primary hover:underline font-bold">Sovereign Governance</button> and Fail-Secure Funding policy.
+                                I confirm I have read and agree to the <a href="/legal" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">Service Terms</a> and <a href="/acceptable-use" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">Acceptable Use Policy</a>.
                             </label>
                         </div>
 
@@ -175,8 +173,6 @@ export const ConsoleRegisterPage = () => {
                     </form>
                 )}
             </motion.div>
-
-            <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
         </div>
     );
 };

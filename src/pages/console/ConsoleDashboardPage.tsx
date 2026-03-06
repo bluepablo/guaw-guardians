@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Key, CreditCard, LogOut, Plus, Trash2, ShieldCheck, Activity, FileText, Users, Clock, X, Lock, Shield, FileCheck, BarChart3, TrendingUp, AlertCircle, Filter, Search, Trophy, Copy, Check } from 'lucide-react';
+import { LayoutDashboard, Key, CreditCard, LogOut, Plus, Trash2, ShieldCheck, Activity, FileText, Users, Clock, X, Lock, Shield, FileCheck, BarChart3, TrendingUp, AlertCircle, Filter, Search, Trophy, Copy, Check, Database } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import ReactMarkdown from 'react-markdown';
 import { consoleService } from '../../services/consoleService';
 import { AccountDetailPanel } from './components/AccountDetailPanel';
 import { MultimodalAuditPanel } from './components/MultimodalAuditPanel';
+import { LazarusLedgerPanel } from './components/LazarusLedgerPanel';
 import { ParticlesBackground } from '../../components/ui/ParticlesBackground';
 import { SovereignGlyph } from '../../components/ui/SovereignGlyph';
 import { CodeBlock } from '../../components/ui/CodeBlock';
@@ -122,11 +123,12 @@ export const ConsoleDashboardPage = () => {
      { label: "Valid Verifications", value: 84012, trend: "+12%" },
      { label: "Bot Attacks Terminated", value: 3119, trend: "+45%" },
      { label: "Bio-Persistence (Active Streaks)", value: 12503, trend: "+8%" },
+     { label: "Silicon Witness (Jitter)", value: 28.34, unit: "µs", trend: "NOMINAL" },
      { label: "Average Latency", value: 28, unit: "ms", trend: "~Steady" }
   ]);
   
   // 🦅 Quota State (Simulation)
-  const [quota, setQuota] = useState({ used: 45000, limit: 100000 }); // Start at Sovereign
+  const [quota, setQuota] = useState({ used: 0, limit: 15000 }); // Trial monthly limit
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('overview');
   const [isCreating, setIsCreating] = useState(false);
@@ -198,7 +200,8 @@ export const ConsoleDashboardPage = () => {
 
   const [targetPlan, setTargetPlan] = useState('');
   const [cryptoError, setCryptoError] = useState('');
-  const [activeSdk, setActiveSdk] = useState<'presence' | 'media'>('presence');
+  const [activeSdk, setActiveSdk] = useState<'presence' | 'media' | 'audit'>('presence');
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
 
   const navigate = useNavigate();
 
@@ -515,7 +518,15 @@ export const ConsoleDashboardPage = () => {
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'integrity' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
           >
             <Shield size={20} />
-            <span className="font-medium">Audit Hub</span>
+            <span className="font-medium">Tribunal</span>
+          </button>
+
+          <button 
+            onClick={() => setActiveTab('ledger')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'ledger' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+          >
+            <Database size={20} />
+            <span className="font-medium">Lazarus Ledger</span>
           </button>
 
           {user.role === 'ADMIN' && (
@@ -608,11 +619,11 @@ export const ConsoleDashboardPage = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className="text-4xl font-bold tracking-tight text-white flex items-center gap-3">
-                    {currentPlanId === 'enterprise_trial' ? 'Sovereign Audit Hub' : `Welcome back, ${user?.email?.split('@')?.[0] || 'Guardian'}.`}
+                    {currentPlanId === 'trial' ? 'Sovereign Audit Hub' : `Welcome back, ${user?.email?.split('@')?.[0] || 'Guardian'}.`}
                     <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">{user?.guawId}</span>
                   </h1>
                   <p className="text-gray-500 mt-2 font-medium">
-                    {currentPlanId === 'enterprise_trial' 
+                    {currentPlanId === 'trial' 
                       ? 'Evaluation Environment // Enterprise Lineage Active'
                       : 'Your sovereign infrastructure is operational and securing interactions.'}
                   </p>
@@ -687,8 +698,20 @@ export const ConsoleDashboardPage = () => {
                             <Activity size={20} />
                         </div>
                       </div>
-                      <p className="text-3xl font-mono font-bold text-white mb-2 tracking-tighter">~{stats[2].value}ms</p>
+                      <p className="text-3xl font-mono font-bold text-white mb-2 tracking-tighter">~{stats[4].value}ms</p>
                       <p className="text-xs font-bold text-purple-400 flex items-center gap-1 uppercase tracking-widest font-mono group-hover:animate-pulse">p50 stable</p>
+                  </div>
+
+                  {/* Silicon Witness */}
+                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:bg-white/10 transition-all group">
+                      <div className="flex items-center justify-between mb-4 italic">
+                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest font-mono">Silicon Witness</p>
+                        <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400 group-hover:scale-110 transition-transform">
+                            <ShieldCheck size={20} />
+                        </div>
+                      </div>
+                      <p className="text-3xl font-mono font-bold text-white mb-2 tracking-tighter">{stats[3].value}µs</p>
+                      <p className="text-xs font-bold text-blue-400 flex items-center gap-1 uppercase tracking-widest font-mono group-hover:animate-pulse">{stats[3].trend}</p>
                   </div>
 
                   {/* Sovereign Credits */}
@@ -1195,6 +1218,10 @@ export const ConsoleDashboardPage = () => {
              <MultimodalAuditPanel token={token} />
           )}
 
+          {activeTab === 'ledger' && (
+             <LazarusLedgerPanel token={token} />
+          )}
+
           {activeTab === 'billing' && (
             <div className="space-y-16 animate-in fade-in zoom-in duration-300">
                 {/* Integration Code Section - Moved to top as per USER request */}
@@ -1216,6 +1243,12 @@ export const ConsoleDashboardPage = () => {
                                     className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSdk === 'media' ? 'bg-emerald-500 text-black shadow-lg' : 'text-gray-500 hover:text-white'}`}
                                 >
                                     Media (Guaw)
+                                </button>
+                                <button 
+                                    onClick={() => setActiveSdk('audit')}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSdk === 'audit' ? 'bg-purple-500 text-white shadow-lg' : 'text-gray-500 hover:text-white'}`}
+                                >
+                                    Audit (SDK)
                                 </button>
                             </div>
 
@@ -1254,7 +1287,7 @@ export const ConsoleDashboardPage = () => {
                                             className="glass"
                                         />
                                     </motion.div>
-                                ) : (
+                                ) : activeSdk === 'media' ? (
                                     <motion.div 
                                         key="media"
                                         initial={{ opacity: 0, x: 20 }}
@@ -1275,6 +1308,27 @@ export const ConsoleDashboardPage = () => {
                                             className="glass-emerald"
                                         />
                                     </motion.div>
+                                ) : (
+                                    <motion.div 
+                                        key="audit"
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        className="space-y-4"
+                                    >
+                                        <CodeBlock 
+                                            language="bash"
+                                            code="npm install @guaw/integrity-validator-sdk"
+                                            filename="Terminal"
+                                            className="glass-purple"
+                                        />
+                                        <CodeBlock 
+                                            language="typescript"
+                                            code={`import { IntegrityVerifier } from '@guaw/integrity-validator-sdk';\n\n// Offline Verification of Signatures\nconst isValid = IntegrityVerifier.verifySovereignHeartbeat(heartbeat);\n\nif (isValid) {\n  // Legally Binding Physical Evidence\n}`}
+                                            filename="audit.ts"
+                                            className="glass-purple"
+                                        />
+                                    </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
@@ -1286,13 +1340,35 @@ export const ConsoleDashboardPage = () => {
                 </div>
 
                 <div className="text-center">
-                   <h1 className="text-5xl font-black mb-2 tracking-tighter uppercase italic">Infrastructure Tiers</h1>
-                   <p className="text-gray-500 text-lg">GUAW does not charge for features. We charge for <strong className="text-white">responsibility</strong> and <strong className="text-white">integrity levels</strong>.</p>
-                   {error && (
-                     <div className="mt-4 p-4 rounded-xl bg-alert/10 text-alert border border-alert/20 font-mono text-sm inline-block">
-                        {error}
-                     </div>
-                   )}
+                    <h1 className="text-5xl font-black mb-2 tracking-tighter uppercase italic">Infrastructure Tiers</h1>
+                    <p className="text-gray-500 text-lg">GUAW does not charge for features. We charge for <strong className="text-white">responsibility</strong> and <strong className="text-white">integrity levels</strong>.</p>
+                    
+                    {/* Billing Toggle */}
+                    <div className="flex justify-center mt-10">
+                        <div className="p-1 rounded-2xl bg-white/5 border border-white/10 flex items-center shadow-xl">
+                            <button 
+                                onClick={() => setBillingCycle('monthly')}
+                                className={`px-8 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${billingCycle === 'monthly' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
+                            >
+                                Monthly
+                            </button>
+                            <button 
+                                onClick={() => setBillingCycle('annual')}
+                                className={`px-8 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative group ${billingCycle === 'annual' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
+                            >
+                                Annual
+                                <span className="absolute -top-3 -right-3 bg-emerald-500 text-black text-[7px] px-2 py-0.5 rounded-full font-black animate-pulse whitespace-nowrap">
+                                    SAVE 17%
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    {error && (
+                      <div className="mt-4 p-4 rounded-xl bg-alert/10 text-alert border border-alert/20 font-mono text-sm inline-block">
+                         {error}
+                      </div>
+                    )}
                 </div>
 
                {recommendedPlanId && (
@@ -1317,154 +1393,187 @@ export const ConsoleDashboardPage = () => {
                   </motion.div>
                )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Universal Evaluation: Trial */}
-                    <div className={`p-8 rounded-3xl transition-all duration-500 group relative overflow-hidden flex flex-col ${currentPlanId === 'trial' ? 'border-2 border-primary/20 bg-primary/5 shadow-2xl scale-[1.02]' : 'glass-dark hover:border-white/10'}`}>
-                        <div className="absolute top-4 left-4 bg-white/10 text-gray-400 text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-white/5">Universal Evaluation</div>
-                        <h3 className="text-2xl font-bold mb-2 text-white mt-8">7-Day Free Access</h3>
-                        <p className="text-xs text-gray-400 mb-8 leading-relaxed h-12">Full access to Kernel + Web SDK for behavior & media integrity evaluation.</p>
-
-                        <div className="flex items-baseline gap-1 mb-8">
-                          <span className="text-5xl font-mono font-bold text-white tracking-tighter">$0</span>
-                          <span className="text-gray-500 font-bold uppercase text-[10px]">/7d</span>
+                <div className="space-y-12 pb-12 w-full lg:max-w-7xl mx-auto">
+                    {/* First Row: 3 cards */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        {/* Trial */}
+                        <div className="p-8 rounded-[3rem] bg-black/40 border border-white/5 space-y-6 group hover:border-white/20 transition-all duration-700 flex flex-col relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <div className="space-y-3 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-gray-500 text-[8px] font-black uppercase tracking-widest border border-white/10">
+                                    Evaluation Unit
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic tracking-tighter">Trial</h3>
+                                <p className="text-gray-600 text-[10px] leading-relaxed italic uppercase tracking-tighter">Explore the sovereign verification stack.</p>
+                            </div>
+                            <div className="flex items-baseline gap-1 relative z-10">
+                                <span className="text-4xl font-black text-white tracking-tighter">$0</span>
+                                <span className="text-gray-600 font-black text-[10px] italic">/7 DAYS</span>
+                            </div>
+                            <ul className="space-y-4 text-[10px] text-gray-500 border-t border-white/5 pt-8 flex-1 relative z-10">
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> 500 req/day · 15k/month</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> 1 domain</li>
+                                <li className="flex items-center gap-3 line-through opacity-30 italic"><FileCheck size={14} /> NO ZK-Proof</li>
+                                <li className="flex items-center gap-3 line-through opacity-30 italic"><FileCheck size={14} /> NO Forensic Chain</li>
+                            </ul>
+                            <button disabled={currentPlanId === 'trial'} className={`mt-8 block w-full py-5 rounded-2xl ${currentPlanId === 'trial' ? 'bg-white text-black' : 'bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black'} font-black text-center text-[10px] uppercase tracking-widest transition-all relative z-10 disabled:opacity-50`}>
+                                {currentPlanId === 'trial' ? 'Active Plan' : 'Start Evaluation'}
+                            </button>
                         </div>
-                        
-                        <ul className="space-y-4 mb-10 text-xs text-gray-300 flex-1">
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> Full SDK & Kernel Access</li>
-                           <li className="flex items-center gap-3 text-red-400/80"><div className="w-1 h-1 rounded-full bg-red-500/50" /> NO Chain Certificates</li>
-                           <li className="flex items-center gap-3 text-red-400/80"><div className="w-1 h-1 rounded-full bg-red-500/50" /> NO Forensic Chain</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> 50,000 req / day</li>
-                        </ul>
-                        
-                        <button disabled={currentPlanId === 'trial'} className="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-gray-200 font-black uppercase tracking-widest text-xs disabled:opacity-50">
-                          {currentPlanId === 'trial' ? 'Trial Active' : 'Start Evaluation'}
-                        </button>
-                    </div>
 
-                  {/* Developer Core */}
-                  <div className={`relative p-1 rounded-3xl transition-all duration-500 ${recommendedPlanId === 'core' ? 'ring-2 ring-primary ring-offset-4 ring-offset-background' : ''} ${currentPlanId === 'pro' ? 'bg-white shadow-[0_0_80px_-20px_rgba(255,255,255,0.4)] scale-105' : 'bg-gradient-to-b from-primary/50 to-primary/5 shadow-[0_0_80px_-20px_rgba(74,222,128,0.2)] scale-105'} z-10`}>
-                    {recommendedPlanId === 'core' && (
-                       <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-black text-[10px] font-black px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(0,255,148,0.6)] z-20 whitespace-nowrap border-2 border-black animate-bounce">
-                          🎯 RECOMMENDED
-                       </div>
-                    )}
-                    <div className="absolute inset-[1px] bg-black rounded-[22px] z-0" />
-                     <div className="relative z-10 p-8 h-full flex flex-col">
-                        <div className="absolute top-4 left-4 bg-primary/20 text-primary text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-primary/20">Active Capacity</div>
-                        
-                        <h3 className="text-2xl font-bold mb-2 text-white mt-8">Developer Core</h3>
-                        <p className="text-xs text-gray-400 mb-8 leading-relaxed h-10">Production applications & mobile services.</p>
-
-                        <div className="flex items-baseline gap-1 mb-8">
-                          <span className="text-5xl font-mono font-bold text-white tracking-tighter">$39</span>
-                          <span className="text-gray-500 font-bold uppercase text-[10px]">/mo</span>
-                        </div>
-                        
-                        <ul className="space-y-4 mb-10 text-xs text-gray-300 flex-1">
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> Base Chain Certificates</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> Signed Events (RSA/PQ-READY)</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> Bio-Entropy SDK Access</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-primary" /> Web + Mobile Deployment</li>
-                        </ul>
-                        
-                        <div className="space-y-3">
-                             <button 
-                                 onClick={() => handleUpgrade('pro')}
-                                 disabled={upgrading || currentPlanId === 'pro'}
-                                 className={`w-full h-14 relative group cursor-pointer overflow-hidden rounded-xl disabled:opacity-50`}
-                             >
-                                 <div className={`absolute inset-0 ${currentPlanId === 'pro' ? 'bg-white/10' : 'bg-primary group-hover:bg-primary/90'} transition-colors`}></div>
-                                     <span className={`absolute inset-0 flex items-center justify-center font-black uppercase tracking-widest text-xs ${currentPlanId === 'pro' ? 'text-gray-400' : 'text-black'}`}>
-                                     {upgrading ? '...' : currentPlanId === 'pro' ? 'Active' : 'Deploy'}
-                                     </span>
-                             </button>
-                             {currentPlanId !== 'pro' && (
-                                <button 
-                                    onClick={() => {
-                                        setTargetPlan('pro');
-                                        setIsCryptoCheckout(true);
-                                        setCryptoStep('NETWORK');
-                                        setCryptoError('');
-                                        setTxHash('');
-                                        setCurrentIntent(null);
-                                    }}
-                                    className="w-full py-3 rounded-xl border border-white/5 text-gray-400 font-bold hover:bg-white/5 hover:text-white transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2"
+                        {/* Lite */}
+                        <div className="p-8 rounded-[3rem] bg-black/40 border border-purple-500/20 space-y-6 group hover:border-purple-500/40 transition-all duration-700 flex flex-col relative overflow-hidden backdrop-blur-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <div className="space-y-3 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[8px] font-black uppercase tracking-widest border border-purple-500/20">
+                                    Layer 1 Only
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic tracking-tighter">Lite</h3>
+                                <p className="text-purple-400/70 text-[10px] leading-relaxed italic uppercase tracking-tighter">Ultimate reCAPTCHA replacement.</p>
+                            </div>
+                            <div className="flex items-baseline gap-1 relative z-10">
+                                <span className="text-4xl font-black text-white tracking-tighter">
+                                    {billingCycle === 'monthly' ? '$39' : '$390'}
+                                </span>
+                                <span className="text-gray-600 font-black text-[10px] italic">
+                                    {billingCycle === 'monthly' ? '/MO' : '/YR'}
+                                </span>
+                            </div>
+                            <ul className="space-y-4 text-[10px] text-gray-400 border-t border-purple-500/10 pt-8 flex-1 relative z-10">
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> 100k req/month · 2 domains</li>
+                                <li className="flex items-center gap-3 italic text-purple-400"><FileCheck size={14} /> <span className="font-black uppercase">Presence SDK Included</span></li>
+                                <li className="flex items-center gap-3 line-through opacity-30 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> Media Detection</li>
+                                <li className="flex items-center gap-3 line-through opacity-30 italic"><div className="w-1 h-1 rounded-full bg-purple-500/60" /> ZK-Proofs</li>
+                            </ul>
+                            <div className="mt-8 space-y-3 relative z-10">
+                                <button
+                                    onClick={() => handleUpgrade('lite')}
+                                    disabled={upgrading || currentPlanId === 'lite'}
+                                    className={`block w-full py-5 rounded-2xl ${currentPlanId === 'lite' ? 'bg-purple-500 text-black' : 'bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500 hover:text-black'} font-black text-center text-[10px] uppercase tracking-widest transition-all disabled:opacity-50`}
                                 >
-                                    <Activity size={14} className="text-green-500" />
-                                    Pay with USDT
+                                    {upgrading ? '...' : currentPlanId === 'lite' ? 'Active Plan' : 'Get API Key'}
                                 </button>
-                            )}
+                            </div>
                         </div>
-                     </div>
-                  </div>
 
-                    {/* Business Tier */}
-                    <div className={`p-8 rounded-3xl transition-all duration-500 group relative overflow-hidden flex flex-col ${currentPlanId === 'business' ? 'border-2 border-primary/20 bg-primary/5 shadow-2xl skew-x-0' : 'glass-dark hover:border-white/10'}`}>
-                       <div className="absolute top-4 left-4 bg-blue-500/10 text-blue-400 text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-blue-500/10">Business</div>
-                       
-                       <h3 className="text-2xl font-bold mb-2 text-white mt-8">Infra Business</h3>
-                        <p className="text-xs text-gray-400 mb-8 leading-relaxed h-10">Advanced integrity & forensics for business infrastructure.</p>
-
-                       <div className="flex items-baseline gap-1 mb-8">
-                         <span className="text-5xl font-mono font-bold text-white tracking-tighter">$149</span>
-                         <span className="text-gray-500 font-bold uppercase text-[10px]">/mo</span>
-                       </div>
-                       
-                        <ul className="space-y-4 mb-10 text-xs text-gray-300 flex-1">
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(58,134,255,0.5)]" /> <span className="text-blue-400 font-bold">Forensic Integrity Chain</span></li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-blue-400" /> Custom Presence Rulesets</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-blue-400" /> Forensic Export (Limited)</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-blue-400" /> SLA Best-Effort</li>
-                        </ul>
-                       
-                        <div className="space-y-3">
-                         <div className="w-full py-4 rounded-xl border border-white/10 text-gray-200 font-black uppercase tracking-widest text-xs text-center opacity-50 bg-white/5">
-                             {currentPlanId === 'business' ? 'Active' : 'Initialize'}
-                         </div>
-                         {currentPlanId !== 'business' && (
-                             <button 
-                                 onClick={() => {
-                                     setTargetPlan('business');
-                                     setIsCryptoCheckout(true);
-                                     setCryptoStep('NETWORK');
-                                     setCryptoError('');
-                                     setTxHash('');
-                                     setCurrentIntent(null);
-                                 }}
-                                 className="w-full py-3 rounded-xl border border-white/5 text-gray-400 font-bold hover:bg-white/5 hover:text-white transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2"
-                             >
-                                 <Activity size={14} className="text-green-500" />
-                                 Pay with USDT
-                             </button>
-                         )}
-                       </div>
+                        {/* Starter */}
+                        <div className="p-8 rounded-[3rem] bg-black/40 border border-emerald-500/20 space-y-6 group hover:border-emerald-500/40 transition-all duration-700 flex flex-col relative overflow-hidden backdrop-blur-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <div className="space-y-3 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[8px] font-black uppercase tracking-widest border border-emerald-500/20">
+                                    Entry SaaS
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic tracking-tighter">Starter</h3>
+                                <p className="text-emerald-400/70 text-[10px] leading-relaxed italic uppercase tracking-tighter">Sovereign verification for startups.</p>
+                            </div>
+                            <div className="flex items-baseline gap-1 relative z-10">
+                                <span className="text-4xl font-black text-white tracking-tighter">
+                                    {billingCycle === 'monthly' ? '$79' : '$790'}
+                                </span>
+                                <span className="text-gray-600 font-black text-[10px] italic">
+                                    {billingCycle === 'monthly' ? '/MO' : '/YR'}
+                                </span>
+                            </div>
+                            <ul className="space-y-4 text-[10px] text-gray-400 border-t border-emerald-500/10 pt-8 flex-1 relative z-10">
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-emerald-500/60" /> 50k req/month · 3 domains</li>
+                                <li className="flex items-center gap-3 italic text-emerald-400"><FileCheck size={14} /> <span className="font-black uppercase">ZK-Proof Included</span></li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-emerald-500/60" /> Advanced Detection (CCD)</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-emerald-500/60" /> SLA 99.5% · Email Support</li>
+                            </ul>
+                            <div className="mt-8 space-y-2 relative z-10">
+                                <button
+                                    onClick={() => handleUpgrade('starter')}
+                                    disabled={upgrading || currentPlanId === 'starter'}
+                                    className={`block w-full py-5 rounded-2xl ${currentPlanId === 'starter' ? 'bg-emerald-500 text-black' : 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500 hover:text-black'} font-black text-center text-[10px] uppercase tracking-widest transition-all disabled:opacity-50`}
+                                >
+                                    {upgrading ? '...' : currentPlanId === 'starter' ? 'Active Plan' : 'Deploy in 5 min'}
+                                </button>
+                                {currentPlanId !== 'starter' && (
+                                    <button
+                                        onClick={() => { setTargetPlan('starter'); setIsCryptoCheckout(true); setCryptoStep('NETWORK'); setCryptoError(''); setTxHash(''); setCurrentIntent(null); }}
+                                        className="block w-full py-2.5 rounded-xl border border-white/5 text-emerald-400/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all text-[9px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2"
+                                    >
+                                        PAY WITH USDT
+                                    </button>
+                                )}
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Enterprise Tier */}
-                    <div className="p-8 rounded-3xl glass-dark border border-white/5 flex flex-col hover:border-white/10 transition-all duration-500 group relative overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
-                        <div className="absolute top-4 left-4 bg-white/10 text-white text-[8px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-white/20">Custom</div>
-                        <h3 className="text-2xl font-bold mb-2 text-white mt-8 italic">Enterprise</h3>
-                        <p className="text-xs text-gray-400 mb-8 leading-relaxed h-10">High-responsibility sovereign environments.</p>
-
-                        <div className="flex items-baseline gap-1 mb-8">
-                          <span className="text-4xl font-mono font-bold text-white tracking-tighter">Custom</span>
+                    {/* Second Row: 2 cards centered */}
+                    <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto pt-6 opacity-30 grayscale filter blur-[0.5px] hover:blur-0 hover:opacity-50 transition-all duration-700">
+                        {/* Pro — Roadmap */}
+                        <div className="p-8 rounded-[3rem] bg-black/40 border border-white/5 space-y-6 flex flex-col relative overflow-hidden">
+                            <div className="space-y-3 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-500 text-[8px] font-black uppercase tracking-widest italic">
+                                   Q3 Roadmap
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic opacity-40 uppercase tracking-tighter">Pro Tier</h3>
+                                <p className="text-gray-600 text-[10px] leading-relaxed italic uppercase tracking-tighter">Production integrity for scalable apps.</p>
+                            </div>
+                            <ul className="space-y-4 text-[10px] text-gray-500 border-t border-white/5 pt-8 relative z-10 flex-1">
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> 250k req/month · 10 domains</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> ZK-Proof + Forensic Export</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> Custom Rulesets + Alerting</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> SLA 99.9% · Priority Support</li>
+                            </ul>
+                            <div className="block w-full py-5 rounded-2xl bg-white/5 border border-white/10 text-gray-600 font-black text-center text-[10px] uppercase tracking-widest relative z-10 cursor-not-allowed">
+                                Locked for Beta
+                            </div>
                         </div>
-                        
-                        <ul className="space-y-4 mb-10 text-xs text-gray-400 flex-1">
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-white/20" /> On-premise deployment</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-white/20" /> Dedicated Forensic SLA</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-white/20" /> Custom ZK-Workflows</li>
-                           <li className="flex items-center gap-3"><div className="w-1 h-1 rounded-full bg-white/20" /> 24/7 Priority Support</li>
-                        </ul>
-                        
-                        <button 
-                            onClick={() => window.location.href='mailto:enterprise@guaw.app?subject=Sovereign Enterprise Inquiry'}
-                            className="w-full py-4 rounded-xl bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-gray-200 transition-all"
-                        >
-                          Request Brief
-                        </button>
+
+                        {/* Business — Roadmap */}
+                        <div className="p-8 rounded-[3rem] bg-black/40 border border-white/5 space-y-6 flex flex-col relative overflow-hidden">
+                            <div className="space-y-3 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-500 text-[8px] font-black uppercase tracking-widest italic">
+                                   Q4 Roadmap
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic opacity-40 uppercase tracking-tighter">Business</h3>
+                                <p className="text-gray-600 text-[10px] leading-relaxed italic uppercase tracking-tighter">Advanced integrity & forensics at scale.</p>
+                            </div>
+                            <ul className="space-y-4 text-[10px] text-gray-500 border-t border-white/5 pt-8 relative z-10 flex-1">
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> 1.5M req/month · Unlimited domains</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> Forensic Integrity Chain</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> Multi-Region (EZE + GRU)</li>
+                                <li className="flex items-center gap-3 italic"><div className="w-1 h-1 rounded-full bg-white/20" /> SLA 99.95% · Dedicated Support</li>
+                            </ul>
+                            <div className="block w-full py-5 rounded-2xl bg-white/5 border border-white/10 text-gray-600 font-black text-center text-[10px] uppercase tracking-widest relative z-10 cursor-not-allowed">
+                                Roadmap Tier
+                            </div>
+                        </div>
                     </div>
-                 </div>
+
+                    {/* Sovereign Tier - Full Width */}
+                    <div className="mt-12 p-10 rounded-[4rem] bg-gradient-to-br from-red-500/5 to-transparent border border-red-500/20 group hover:border-red-500/40 transition-all duration-700 relative overflow-hidden backdrop-blur-3xl">
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                        <div className="absolute top-0 right-0 p-8 opacity-[0.05] group-hover:opacity-10 transition-opacity pointer-events-none">
+                            <SovereignGlyph type="cerberus" size={140} color="#ef4444" />
+                        </div>
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                            <div className="space-y-4">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[9px] font-black uppercase tracking-[0.2em] border border-red-500/20">
+                                    Maximum Sovereign Authority
+                                </div>
+                                <h3 className="text-3xl font-black text-white italic">Sovereign Tier</h3>
+                                <p className="text-gray-500 text-[11px] max-w-2xl leading-relaxed italic uppercase tracking-tighter">
+                                    Dedicated infrastructure · HSM Engineering integration · On-premise deployment · 99.99% Guaranteed SLA · Legal Witness Protocol · Custom volume & zero-knowledge custom circuits.
+                                </p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row items-center gap-8">
+                                <div className="flex items-center gap-3 text-[10px] italic">
+                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.9)]" />
+                                    <span className="text-red-500 font-black uppercase tracking-widest">Pricing: Custom Engineering</span>
+                                </div>
+                                <button 
+                                    onClick={() => window.location.href='mailto:enterprise@guaw.app?subject=Sovereign Enterprise Inquiry'}
+                                    className="flex-shrink-0 px-12 py-6 rounded-2xl bg-red-500 text-black font-black text-[11px] uppercase tracking-[0.3em] hover:scale-[1.05] transition-all shadow-[0_15px_50px_-10px_rgba(239,68,68,0.4)]"
+                                >
+                                    Consultation
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* Crypto Checkout Modal */}
                 {isCryptoCheckout && (
@@ -2318,7 +2427,8 @@ export const ConsoleDashboardPage = () => {
       </main>
 
       {/* ADMIN DETAIL PANEL - DRAWER */}
-      <AccountDetailPanel 
+      {selectedAccountId && (
+         <AccountDetailPanel 
         accountId={selectedAccountId}
         token={token}
         onClose={() => setSelectedAccountId(null)}
@@ -2332,6 +2442,7 @@ export const ConsoleDashboardPage = () => {
             setDowngradeConfirm('');
         }}
       />
+      )}
 
       {/* SOVEREIGN ASSET VIEWER MODAL */}
       {selectedAsset && (

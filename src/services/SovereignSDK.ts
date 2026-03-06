@@ -10,7 +10,8 @@
  * 3. Direct mapping to the Backend SovereignBridge.
  */
 
-const API_BASE = 'http://localhost:3002/api/v1';
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE = import.meta.env.VITE_API_URL || (isLocal ? 'http://localhost:3002/api/v1' : '/api/v1');
 
 export interface SignalMetadata {
     entropy: number;
@@ -121,7 +122,7 @@ export class SovereignSDK {
      */
     public async reportAnomaly(anomalyData: Record<string, unknown>, metadata: Record<string, unknown> = {}): Promise<boolean> {
         // We use the direct sovereign integrity endpoint
-        const ANOMALY_ENDPOINT = 'http://localhost:3002/api/sovereign/integrity/anomaly';
+        const ANOMALY_ENDPOINT = `${API_BASE.replace('/v1', '')}/sovereign/integrity/anomaly`;
         
         try {
             const res = await fetch(ANOMALY_ENDPOINT, {

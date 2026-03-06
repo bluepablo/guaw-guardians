@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /console/dashboard
+
+Sitemap: https://guaw.com/sitemap.xml
